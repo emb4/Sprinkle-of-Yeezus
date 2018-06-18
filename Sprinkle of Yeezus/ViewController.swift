@@ -9,37 +9,31 @@
 import UIKit
 import UserNotifications
 
+func pickRandomQuote(_  sprinkleList: Array<Sprinkle>) -> Sprinkle{
+    let range = sprinkleList.count
+    let pick = Int(arc4random_uniform(UInt32(range)))
+    print(sprinkleList[pick])
+    return sprinkleList[pick]
+    //This picks a random kanye quote from the structure
+}
+extension UITextView {
+    
+    func centerVertically() {
+        let fittingSize = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)
+        let size = sizeThatFits(fittingSize)
+        let topOffset = (bounds.size.height - size.height * zoomScale) / 2
+        let positiveTopOffset = max(1, topOffset)
+        contentOffset.y = -positiveTopOffset
+    }
+    
+}
+
 class ViewController: UIViewController {
     
+    @IBOutlet weak var DescLabel: UILabel!
     @IBOutlet weak var QuoteBox: UITextView!
-    
-    func sprinkleNotifications(_ sprinkleList: Array<Sprinkle>) {
-        if notificationsOn == true{
-        let notificationText = pickRandomQuote(sprinkleList)
-        print("The Notification center is running...")
-        let notification = UNMutableNotificationContent()
-        notification.body = " \"\(notificationText.quote)\" \(notificationText.quoteSource), \(notificationText.date)"
-        notification.badge = 1
-        print("A notification should have came out by now...")
-        
-        let timeBetweenNotifications = UNTimeIntervalNotificationTrigger(timeInterval: 43200, repeats: true)
-        let notificationRequest = UNNotificationRequest(identifier: "times up", content: notification, trigger: timeBetweenNotifications)
-        
-        UNUserNotificationCenter.current().add(notificationRequest, withCompletionHandler: nil)
-        }
-    }
-    
-
-    
-    func pickRandomQuote(_  sprinkleList: Array<Sprinkle>) -> Sprinkle{
-        let range = sprinkleList.count
-        let pick = Int(arc4random_uniform(UInt32(range)))
-        print(sprinkleList[pick])
-        return sprinkleList[pick]
-        //This picks a random kanye quote from the structure
-    }
-    
     var regularCaseQuoteBoxText = String()
+    @IBOutlet weak var NewQuoteButtonLabel: UIButton!
     
     //Filling in boxes
     func fillTextBoxes(_ sprinkleList: Sprinkle) {
@@ -47,7 +41,7 @@ class ViewController: UIViewController {
         
         //fill quote box with quote
         QuoteBox.text = "\(sprinkleQuote.quote)"
-
+        QuoteBox.centerVertically()
         
         /*
         //fill source box
@@ -62,38 +56,29 @@ class ViewController: UIViewController {
             QuoteBox.text?.append(", \(sprinkleQuote.date)")
         }
  */
-        QuoteBox.centerVertically()
+
     }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {didAllow, error in})
-        let selectedQuote = pickRandomQuote(sprinkleList)
-        QuoteBox.centerVertically()
-        fillTextBoxes(selectedQuote)
-        sprinkleNotifications(sprinkleList)
-        QuoteBox.centerVertically()
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.4705882353, green: 0.9411764706, blue: 0.368627451, alpha: 1)
     }
     
     @IBAction func NewQuoteButton(_ sender: UIButton) {
         fillTextBoxes(pickRandomQuote(sprinkleList))
-        
+        NewQuoteButtonLabel.setTitle("MORE KANYE-FIDENCE", for: .normal)
+        DescLabel.isHidden = true
     }
     
     @IBAction func ShareButton(_ sender: UIButton) {
-        let quote = UIActivityViewController(activityItems: ["\(regularCaseQuoteBoxText) - via Sprinkle of Yeezus app"], applicationActivities: nil)
+        let quote = UIActivityViewController(activityItems: [QuoteBox.text + " - via Sprinkle of Yeezus app"], applicationActivities: nil)
         present(quote, animated: true, completion: nil)
     }
     
-    var notificationsOn = false
-    @IBAction func NotificationToggle(_ sender: UISwitch) {
-        if notificationsOn == false {
-            notificationsOn = true
-        } else {
-            notificationsOn = true
-        }
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -102,15 +87,5 @@ class ViewController: UIViewController {
     
 }
 
-extension UITextView {
-    
-    func centerVertically() {
-        let fittingSize = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)
-        let size = sizeThatFits(fittingSize)
-        let topOffset = (bounds.size.height - size.height * zoomScale) / 2
-        let positiveTopOffset = max(1, topOffset)
-        contentOffset.y = -positiveTopOffset
-    }
-    
-}
+
 

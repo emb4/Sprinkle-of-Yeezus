@@ -55,7 +55,7 @@ class SettingsPage: UIViewController {
         
         let notification = UNMutableNotificationContent()
         let notificationText = pickRandomQuote(sprinkleList)
-        notification.body = " \"\(notificationText.quote)\" \(notificationText.quoteSource), \(notificationText.date)"
+        notification.body = "\"\(notificationText.quote)\" \(notificationText.quoteSource), \(notificationText.date)"
 
         let components = Calendar.current.dateComponents([.hour, .minute], from: sprinkleTimePicked)
         let hour = components.hour ?? 12

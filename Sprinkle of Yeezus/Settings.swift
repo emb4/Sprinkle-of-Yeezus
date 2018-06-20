@@ -11,52 +11,68 @@ import UIKit
 import UserNotifications
 
 class SettingsPage: UIViewController {
-    
 
-    @IBOutlet weak var InfoLabel: UILabel!
-    @IBOutlet weak var DescButton: UIButton!
-    @IBOutlet weak var DescLabel: UILabel!
-    @IBOutlet weak var Switch: UISwitch!
+    @IBOutlet private weak var InfoLabel: UILabel!
+    @IBOutlet private weak var DescButton: UIButton!
+    @IBOutlet private weak var DescLabel: UILabel!
+    @IBOutlet private weak var Switch: UISwitch!
+    @IBOutlet private weak var TimePicked: UIDatePicker!
     
-    var notificationsOn = Bool()
+    private var sprinkleTimePicked = Date()
+    private let notificationCenter = UNUserNotificationCenter.current()
     
-    @IBAction func NotificationSwitch(_ sender: UISwitch) {
-        if Switch.isOn == true{
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in})
-            
-            DescLabel.isHidden = false
-            DescButton.isHidden = false
-            
-            notificationsOn = true
-        } else {
-            DescLabel.isHidden = true
-            DescButton.isHidden = true
-            notificationsOn = false
-        }
-    }
-    
-    @IBOutlet weak var TimePicked: UIDatePicker!
-    var sprinkleTimePicked = Date()
-    @IBAction func TimePicker(_ sender: UIDatePicker){
-        sprinkleTimePicked = TimePicked.date
-    }
-    
-    func sprinkleNotifications(_ sprinkleList: Array<Sprinkle>) {
-        if notificationsOn == true{
-            
-            let notification = UNMutableNotificationContent()
-            let notificationText = pickRandomQuote(sprinkleList)
-            notification.body = " \"\(notificationText.quote)\" \(notificationText.quoteSource), \(notificationText.date)"
-            
-            let timeForSprinkle = TimePicked.date
-            let components = Calendar.current.dateComponents([.hour, .minute], from: timeForSprinkle)
-            InfoLabel.text = "Sprinkles will be sent every day at \(components.hour):\(components.minute)"
-            let notificationTime = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-            
-        }
-    }
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         sprinkleNotifications(sprinkleList)
+    }
+    
+    // MARK: - IBAction
+    @IBAction private func NotificationSwitch(_ sender: UISwitch) {
+        if sender.isOn {
+            notificationCenter.requestAuthorization(options: [.alert, .sound], completionHandler: { didAllow, error in
+                DispatchQueue.main.async {
+                    sender.isOn = didAllow
+                    self.updateUI()
+                }
+            })
+        }
+        
+        updateUI()
+    }
+    
+    @IBAction private func TimePicker(_ sender: UIDatePicker) {
+        sprinkleTimePicked = sender.date
+    }  
+    
+    // MARK: - Private
+    private func updateUI() {
+        [DescLabel, DescButton].forEach { $0.isHidden = !Switch.isOn }
+    }
+    
+    private func sprinkleNotifications(_ sprinkleList: Array<Sprinkle>) {
+        notificationCenter.removeAllPendingNotificationRequests()
+        
+        guard Switch.isOn else {
+            return
+        }
+        
+        let notification = UNMutableNotificationContent()
+        let notificationText = pickRandomQuote(sprinkleList)
+        notification.body = "\"\(notificationText.quote)\" \(notificationText.quoteSource), \(notificationText.date)"
+
+        let components = Calendar.current.dateComponents([.hour, .minute], from: sprinkleTimePicked)
+        let hour = components.hour ?? 12
+        let minute = components.minute ?? 0
+        
+        InfoLabel.text = "Sprinkles will be sent every day at \(hour):\(minute)"
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        let request = UNNotificationRequest(identifier: "Sprinkle-of-Yeezus", content: notification, trigger: trigger)
+        
+        notificationCenter.add(request) { error in
+            if let error = error {
+                print(error)
+            }
+        }
     }
 }

@@ -18,7 +18,8 @@ class SettingsPage: UIViewController {
     @IBOutlet private weak var Switch: UISwitch!
     @IBOutlet private weak var TimePicked: UIDatePicker!
     
-    var sprinkleTimePicked = Date()
+    private var sprinkleTimePicked: Date?
+    private var notificationCenter = UNUserNotificationCenter.current()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -28,7 +29,7 @@ class SettingsPage: UIViewController {
     // MARK: - IBAction
     @IBAction private func NotificationSwitch(_ sender: UISwitch) {
         if sender.isOn {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: { didAllow, error in
+            notificationCenter.requestAuthorization(options: [.alert, .sound], completionHandler: { didAllow, error in
                 sender.isOn = didAllow
             })
         }
@@ -46,17 +47,29 @@ class SettingsPage: UIViewController {
     }
     
     private func sprinkleNotifications(_ sprinkleList: Array<Sprinkle>) {
-        guard Switch.isOn else {
+        guard Switch.isOn, let sprinkleTimePicked = sprinkleTimePicked else {
             return
         }
+        
+        notificationCenter.removeAllPendingNotificationRequests()
         
         let notification = UNMutableNotificationContent()
         let notificationText = pickRandomQuote(sprinkleList)
         notification.body = " \"\(notificationText.quote)\" \(notificationText.quoteSource), \(notificationText.date)"
 
-        let timeForSprinkle = TimePicked.date
-        let components = Calendar.current.dateComponents([.hour, .minute], from: timeForSprinkle)
-        InfoLabel.text = "Sprinkles will be sent every day at \(components.hour):\(components.minute)"
-        let notificationTime = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        let components = Calendar.current.dateComponents([.hour, .minute], from: sprinkleTimePicked)
+        let hour = components.hour ?? 12
+        let minute = components.minute ?? 0
+        
+        InfoLabel.text = "Sprinkles will be sent every day at \(hour):\(minute)"
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        let request = UNNotificationRequest(identifier: "Sprinkle-of-Yeezus", content: notification, trigger: trigger)
+        
+        notificationCenter.add(request) { error in
+            if let error = error {
+                print(error)
+            }
+        }
     }
 }

@@ -50,11 +50,11 @@ class SettingsPage: UIViewController {
     }
     
     private func sprinkleNotifications(_ sprinkleList: Array<Sprinkle>) {
+        notificationCenter.removeAllPendingNotificationRequests()
+        
         guard Switch.isOn else {
             return
         }
-        
-        notificationCenter.removeAllPendingNotificationRequests()
         
         let notification = UNMutableNotificationContent()
         let notificationText = pickRandomQuote(sprinkleList)

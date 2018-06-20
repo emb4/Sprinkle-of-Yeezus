@@ -19,7 +19,7 @@ class SettingsPage: UIViewController {
     @IBOutlet private weak var TimePicked: UIDatePicker!
     
     private var sprinkleTimePicked = Date()
-    private var notificationCenter = UNUserNotificationCenter.current()
+    private let notificationCenter = UNUserNotificationCenter.current()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {

@@ -40,7 +40,7 @@ class SettingsPage: UIViewController {
         updateUI()
     }
     
-    @IBAction private func TimePicker(_ sender: UIDatePicker){
+    @IBAction private func TimePicker(_ sender: UIDatePicker) {
         sprinkleTimePicked = sender.date
     }  
     

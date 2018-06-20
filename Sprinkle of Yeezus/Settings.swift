@@ -41,7 +41,7 @@ class SettingsPage: UIViewController {
     }
     
     @IBAction private func TimePicker(_ sender: UIDatePicker){
-        sprinkleTimePicked = TimePicked.date
+        sprinkleTimePicked = sender.date
     }  
     
     // MARK: - Private

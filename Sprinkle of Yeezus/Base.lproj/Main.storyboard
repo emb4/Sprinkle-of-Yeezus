@@ -158,13 +158,13 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Eric Bates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1c-eO-o2y">
-                                <rect key="frame" x="116" y="184" width="143" height="35"/>
+                                <rect key="frame" x="109.5" y="184" width="156.5" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Jrhand" family="jr!hand" pointSize="26"/>
                                 <color key="textColor" red="0.47058823529999999" green="0.94117647059999998" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ericbates1994@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrE-Fw-KZv">
-                                <rect key="frame" x="65.5" y="227" width="245" height="35"/>
+                                <rect key="frame" x="35" y="229.5" width="306.5" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Jrhand" family="jr!hand" pointSize="26"/>
                                 <color key="textColor" red="0.47058823529999999" green="0.94117647059999998" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -282,7 +282,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGb-jX-hlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pmx-lM-3do" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="129"/>
+            <point key="canvasLocation" x="2868" y="116"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rtj-U4-idD">

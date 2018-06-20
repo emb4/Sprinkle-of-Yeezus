@@ -18,7 +18,7 @@ class SettingsPage: UIViewController {
     @IBOutlet private weak var Switch: UISwitch!
     @IBOutlet private weak var TimePicked: UIDatePicker!
     
-    private var sprinkleTimePicked: Date?
+    private var sprinkleTimePicked = Date()
     private var notificationCenter = UNUserNotificationCenter.current()
     
     // MARK: - Lifecycle
@@ -30,7 +30,10 @@ class SettingsPage: UIViewController {
     @IBAction private func NotificationSwitch(_ sender: UISwitch) {
         if sender.isOn {
             notificationCenter.requestAuthorization(options: [.alert, .sound], completionHandler: { didAllow, error in
-                sender.isOn = didAllow
+                DispatchQueue.main.async {
+                    sender.isOn = didAllow
+                    self.updateUI()
+                }
             })
         }
         
@@ -47,7 +50,7 @@ class SettingsPage: UIViewController {
     }
     
     private func sprinkleNotifications(_ sprinkleList: Array<Sprinkle>) {
-        guard Switch.isOn, let sprinkleTimePicked = sprinkleTimePicked else {
+        guard Switch.isOn else {
             return
         }
         

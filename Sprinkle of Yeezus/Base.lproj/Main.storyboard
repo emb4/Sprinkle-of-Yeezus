@@ -175,7 +175,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Change Time"/>
                                 <connections>
-                                    <segue destination="RUO-8m-v0c" kind="show" id="md3-3O-3FK"/>
+                                    <action selector="pickTimeAction" destination="M4Q-uL-JFx" eventType="touchUpInside" id="psW-Ui-91d"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -215,7 +215,6 @@
                         <outlet property="changeTimeButton" destination="pUp-GP-r7o" id="U09-fX-jjF"/>
                         <outlet property="informationLabel" destination="ber-2o-Fgo" id="6o8-ZB-KNC"/>
                         <outlet property="notificationSwitch" destination="kDU-ca-07B" id="5cg-6D-b4v"/>
-                        <segue destination="RUO-8m-v0c" kind="show" id="srm-Gd-ssY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0SE-6h-1yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,7 +224,7 @@
         <!--Time Picker-->
         <scene sceneID="yBJ-aT-yHy">
             <objects>
-                <viewController id="RUO-8m-v0c" customClass="TimePicker" customModule="Sprinkle_of_Yeezus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimePickerViewController" id="RUO-8m-v0c" customClass="TimePicker" customModule="Sprinkle_of_Yeezus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sxu-cw-aTD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGb-jX-hlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2868" y="116"/>
+            <point key="canvasLocation" x="2606" y="128"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rtj-U4-idD">
@@ -302,7 +301,4 @@
         <image name="YeAlbumCover" width="3000" height="3000"/>
         <image name="YeezusAlbumCover" width="1024" height="1024"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="srm-Gd-ssY"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -43,8 +43,13 @@ class SettingsPage: UIViewController {
         updateUI()
     }
     
-    @IBAction private func timePicker(_ sender: UIDatePicker) {
-        sprinkleTimePicked = sender.date
+    @IBAction private func pickTimeAction() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        let controller = storyboard.instantiateViewController(withIdentifier: "TimePickerViewController") as! TimePicker
+        controller.delegate = self
+        
+        navigationController?.pushViewController(controller, animated: true)
     }  
     
     // MARK: - Private
@@ -77,5 +82,13 @@ class SettingsPage: UIViewController {
                 print(error)
             }
         }
+    }
+}
+
+extension SettingsPage: TimePickerDelegate {
+    
+    func didUpdatePicker(date: Date) {
+        sprinkleTimePicked = date
+        sprinkleNotifications(sprinkleList)
     }
 }

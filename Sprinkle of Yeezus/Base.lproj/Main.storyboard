@@ -149,12 +149,7 @@
                                 <rect key="frame" x="295" y="482" width="51" height="31"/>
                                 <color key="onTintColor" red="0.47058823529999999" green="0.94117647059999998" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="NotificationSwitch:" destination="hhP-hf-L3s" eventType="valueChanged" id="4gL-Uy-NSI"/>
-                                    <action selector="NotificationSwitch:" destination="M4Q-uL-JFx" eventType="valueChanged" id="mDk-pt-VLx"/>
-                                    <action selector="NotificationToggle:" destination="hhP-hf-L3s" eventType="valueChanged" id="jUk-RJ-bbP"/>
-                                    <action selector="notifactionSwitch:" destination="hhP-hf-L3s" eventType="valueChanged" id="UdE-9C-l12"/>
-                                    <action selector="notificationSwitch:" destination="hhP-hf-L3s" eventType="valueChanged" id="mXZ-FP-vT3"/>
-                                    <action selector="notificationsToggle:" destination="hhP-hf-L3s" eventType="valueChanged" id="xk6-8V-Hqo"/>
+                                    <action selector="NotificationSwitch:" destination="M4Q-uL-JFx" eventType="valueChanged" id="Zgh-U7-d5Z"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Eric Bates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1c-eO-o2y">
@@ -219,18 +214,18 @@
                     <connections>
                         <outlet property="changeTimeButton" destination="pUp-GP-r7o" id="U09-fX-jjF"/>
                         <outlet property="informationLabel" destination="ber-2o-Fgo" id="6o8-ZB-KNC"/>
+                        <outlet property="notificationSwitch" destination="kDU-ca-07B" id="5cg-6D-b4v"/>
                         <segue destination="RUO-8m-v0c" kind="show" id="srm-Gd-ssY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0SE-6h-1yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="hhP-hf-L3s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1830.4347826086957" y="128.80434782608697"/>
         </scene>
-        <!--Settings Page-->
+        <!--Time Picker-->
         <scene sceneID="yBJ-aT-yHy">
             <objects>
-                <viewController id="RUO-8m-v0c" customClass="SettingsPage" customModule="Sprinkle_of_Yeezus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RUO-8m-v0c" customClass="TimePicker" customModule="Sprinkle_of_Yeezus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sxu-cw-aTD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -242,9 +237,7 @@
                                     <!--2018-06-17 23:24:07 +0000-->
                                 </date>
                                 <connections>
-                                    <action selector="DatePicker:" destination="pmx-lM-3do" eventType="valueChanged" id="TZW-Zl-eC5"/>
-                                    <action selector="TimePicker:" destination="pmx-lM-3do" eventType="valueChanged" id="5s8-1P-AeM"/>
-                                    <action selector="TimePicker:" destination="RUO-8m-v0c" eventType="valueChanged" id="bmG-kS-tdo"/>
+                                    <action selector="getTimeFromPicker:" destination="RUO-8m-v0c" eventType="valueChanged" id="xeO-ie-kLO"/>
                                 </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter new notification time here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYc-KK-leP">
@@ -274,11 +267,10 @@
                         <viewLayoutGuide key="safeArea" id="pgH-EV-XxP"/>
                     </view>
                     <connections>
-                        <outlet property="TimePicked" destination="KgD-60-GbZ" id="FUr-OU-qdP"/>
+                        <outlet property="timePicker" destination="KgD-60-GbZ" id="ufE-75-PL3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGb-jX-hlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="pmx-lM-3do" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2868" y="116"/>
         </scene>

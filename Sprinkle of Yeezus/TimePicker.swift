@@ -20,13 +20,7 @@ class TimePicker: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var timePicked: Date
-        timePicker.datePickerMode = .time
-        if timePicked == nil {
-            timePicker.date = Date()
-        } else {
-            timePicker.date = timePicked
-        }
+
             
         // Do any additional setup after loading the view.
     }

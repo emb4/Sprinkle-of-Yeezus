@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E130F99E20D74F3E00B2D0FA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E130F99D20D74F3E00B2D0FA /* Settings.swift */; };
 		E16E2A0A20B1CEAB0071D168 /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E2A0920B1CEAB0071D168 /* Quotes.swift */; };
+		E1967A9920DB17E5000C4B78 /* ye big no text.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1967A9820DB17E5000C4B78 /* ye big no text.jpg */; };
+		E1967A9C20DB1931000C4B78 /* sprinkleofyeezusicons_0000s_0000s_0000_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E1967A9B20DB1931000C4B78 /* sprinkleofyeezusicons_0000s_0000s_0000_Icon.png */; };
+		E1E5395E20DB1CF400E1539B /* jr!ha___.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1967A9A20DB184E000C4B78 /* jr!ha___.ttf */; };
 		E1EC8027209936B9001EC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EC8026209936B9001EC6A2 /* AppDelegate.swift */; };
 		E1EC8029209936B9001EC6A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EC8028209936B9001EC6A2 /* ViewController.swift */; };
 		E1EC802C209936B9001EC6A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EC802A209936B9001EC6A2 /* Main.storyboard */; };
@@ -19,6 +22,9 @@
 /* Begin PBXFileReference section */
 		E130F99D20D74F3E00B2D0FA /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E16E2A0920B1CEAB0071D168 /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
+		E1967A9820DB17E5000C4B78 /* ye big no text.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "ye big no text.jpg"; path = "../../../../Downloads/ye big no text.jpg"; sourceTree = "<group>"; };
+		E1967A9A20DB184E000C4B78 /* jr!ha___.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "jr!ha___.ttf"; path = "../../../../Downloads/jr-hand/jr!ha___.ttf"; sourceTree = "<group>"; };
+		E1967A9B20DB1931000C4B78 /* sprinkleofyeezusicons_0000s_0000s_0000_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sprinkleofyeezusicons_0000s_0000s_0000_Icon.png; path = ../../../SprinkleofYeezusIcons/sprinkleofyeezusicons_0000s_0000s_0000_Icon.png; sourceTree = "<group>"; };
 		E1EC8023209936B8001EC6A2 /* Sprinkle of Yeezus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sprinkle of Yeezus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1EC8026209936B9001EC6A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1EC8028209936B9001EC6A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,8 +70,11 @@
 				E16E2A0920B1CEAB0071D168 /* Quotes.swift */,
 				E1EC802A209936B9001EC6A2 /* Main.storyboard */,
 				E1EC802D209936BA001EC6A2 /* Assets.xcassets */,
+				E1967A9A20DB184E000C4B78 /* jr!ha___.ttf */,
 				E1EC802F209936BA001EC6A2 /* LaunchScreen.storyboard */,
+				E1967A9B20DB1931000C4B78 /* sprinkleofyeezusicons_0000s_0000s_0000_Icon.png */,
 				E1EC8032209936BA001EC6A2 /* Info.plist */,
+				E1967A9820DB17E5000C4B78 /* ye big no text.jpg */,
 			);
 			path = "Sprinkle of Yeezus";
 			sourceTree = "<group>";
@@ -128,9 +137,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E5395E20DB1CF400E1539B /* jr!ha___.ttf in Resources */,
+				E1967A9C20DB1931000C4B78 /* sprinkleofyeezusicons_0000s_0000s_0000_Icon.png in Resources */,
 				E1EC8031209936BA001EC6A2 /* LaunchScreen.storyboard in Resources */,
 				E1EC802E209936BA001EC6A2 /* Assets.xcassets in Resources */,
 				E1EC802C209936B9001EC6A2 /* Main.storyboard in Resources */,
+				E1967A9920DB17E5000C4B78 /* ye big no text.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

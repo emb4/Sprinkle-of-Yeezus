@@ -12,18 +12,21 @@ import UserNotifications
 
 class SettingsPage: UIViewController {
 
-    @IBOutlet private weak var InfoLabel: UILabel!
-    @IBOutlet private weak var DescButton: UIButton!
-    @IBOutlet private weak var DescLabel: UILabel!
-    @IBOutlet private weak var Switch: UISwitch!
-    @IBOutlet private weak var TimePicked: UIDatePicker!
+    @IBOutlet private weak var informationLabel: UILabel!
+    @IBOutlet private weak var changeTimeButton: UIButton!
+    @IBOutlet private weak var notificationSwitch: UISwitch!
+    @IBOutlet private weak var timePicked: UIDatePicker!
     
     private var sprinkleTimePicked = Date()
     private let notificationCenter = UNUserNotificationCenter.current()
     
+
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         sprinkleNotifications(sprinkleList)
+        
+        
     }
     
     // MARK: - IBAction
@@ -46,13 +49,13 @@ class SettingsPage: UIViewController {
     
     // MARK: - Private
     private func updateUI() {
-        [DescLabel, DescButton].forEach { $0.isHidden = !Switch.isOn }
+        [informationLabel, changeTimeButton].forEach { $0.isHidden = !notificationSwitch.isOn }
     }
     
     private func sprinkleNotifications(_ sprinkleList: Array<Sprinkle>) {
         notificationCenter.removeAllPendingNotificationRequests()
         
-        guard Switch.isOn else {
+        guard notificationSwitch.isOn else {
             return
         }
         
@@ -64,7 +67,7 @@ class SettingsPage: UIViewController {
         let hour = components.hour ?? 12
         let minute = components.minute ?? 0
         
-        InfoLabel.text = "Sprinkles will be sent every day at \(hour):\(minute)"
+        informationLabel.text = "Sprinkles will be sent every day at \(hour):\(minute)"
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
         let request = UNNotificationRequest(identifier: "Sprinkle-of-Yeezus", content: notification, trigger: trigger)

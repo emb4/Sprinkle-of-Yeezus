@@ -217,10 +217,8 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
-                        <outlet property="DescButton" destination="pUp-GP-r7o" id="EgA-Rx-Pve"/>
-                        <outlet property="DescLabel" destination="ber-2o-Fgo" id="iB8-XN-A6U"/>
-                        <outlet property="InfoLabel" destination="ber-2o-Fgo" id="lhu-Uy-d77"/>
-                        <outlet property="Switch" destination="kDU-ca-07B" id="Htg-aX-uiL"/>
+                        <outlet property="changeTimeButton" destination="pUp-GP-r7o" id="U09-fX-jjF"/>
+                        <outlet property="informationLabel" destination="ber-2o-Fgo" id="6o8-ZB-KNC"/>
                         <segue destination="RUO-8m-v0c" kind="show" id="srm-Gd-ssY"/>
                     </connections>
                 </viewController>

@@ -25,12 +25,19 @@ class SettingsPage: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         sprinkleNotifications(sprinkleList)
-        
+        updateLabelTime()
+        updateSwitchStatus()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let savedLabel = UserDefaults.standard.string(forKey: "labelSaved")
+        informationLabel.text = savedLabel
         
     }
     
     // MARK: - IBAction
     @IBAction private func NotificationSwitch(_ sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: "switchStatus") //saves the status of the switch
         if sender.isOn {
             notificationCenter.requestAuthorization(options: [.alert, .sound], completionHandler: { didAllow, error in
                 DispatchQueue.main.async {
@@ -69,13 +76,10 @@ class SettingsPage: UIViewController {
         notification.body = "\"\(notificationText.quote)\" \(notificationText.quoteSource), \(notificationText.date)"
 
         let components = Calendar.current.dateComponents([.hour, .minute], from: sprinkleTimePicked)
-        let hour = components.hour ?? 12
-        let minute = components.minute ?? 0
-        
-        informationLabel.text = "Sprinkles will be sent every day at \(hour):\(minute)"
-        
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
         let request = UNNotificationRequest(identifier: "Sprinkle-of-Yeezus", content: notification, trigger: trigger)
+        
+        updateLabelTime()
         
         notificationCenter.add(request) { error in
             if let error = error {
@@ -83,7 +87,33 @@ class SettingsPage: UIViewController {
             }
         }
     }
+    
+    func updateSwitchStatus(){ //this function checks to see if the switch was flipped in the past and acts accordingly
+        let notificationsOn = UserDefaults.standard.bool(forKey: "switchStatus")
+        notificationSwitch.isOn = notificationsOn
+        if notificationsOn {
+            updateUI()
+        }
+    }
+    
+    func updateLabelTime(){ //updates the label that shows when the next sprinkle is coming, currently not working 100%
+        let time = sprinkleTimePicked
+        let timeFormat = DateFormatter()
+        timeFormat.dateStyle = .none
+        timeFormat.timeStyle = .short
+        let formattedTime = timeFormat.string(from: time)
+        UserDefaults.standard.set(formattedTime, forKey: "timeSaved")
+        let savedFormattedTime = UserDefaults.standard.string(forKey: "timeSaved")
+        
+        informationLabel.text = "Sprinkles will be sent every day at \n"
+        if time == Date() && savedFormattedTime != nil{
+            informationLabel.text?.append(savedFormattedTime!)
+        } else {
+            informationLabel.text?.append(formattedTime)
+        }
+    }
 }
+
 
 extension SettingsPage: TimePickerDelegate {
     

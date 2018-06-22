@@ -17,7 +17,7 @@ class SettingsPage: UIViewController {
     @IBOutlet private weak var notificationSwitch: UISwitch!
     @IBOutlet private weak var timePicked: UIDatePicker!
     
-    private var sprinkleTimePicked = Date()
+    private var sprinkleTimePicked = Defaults.notificationDate ?? Date()
     private let notificationCenter = UNUserNotificationCenter.current()
     
 
@@ -112,6 +112,7 @@ class SettingsPage: UIViewController {
 extension SettingsPage: TimePickerDelegate {
     
     func didUpdatePicker(date: Date) {
+        Defaults.notificationDate = date
         sprinkleTimePicked = date
         sprinkleNotifications(sprinkleList)
     }

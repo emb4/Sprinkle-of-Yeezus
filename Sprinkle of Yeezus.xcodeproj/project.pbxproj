@@ -11,6 +11,7 @@
 		E16E2A0A20B1CEAB0071D168 /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16E2A0920B1CEAB0071D168 /* Quotes.swift */; };
 		E1E464E920DB3D4C00B7FD3D /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E464E820DB3D4C00B7FD3D /* TimePicker.swift */; };
 		E1E464F220DB48CB00B7FD3D /* jr!ha___.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1E464EF20DB46CC00B7FD3D /* jr!ha___.ttf */; };
+		E1E464F420DCA07A00B7FD3D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E464F320DCA07A00B7FD3D /* Defaults.swift */; };
 		E1EC8027209936B9001EC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EC8026209936B9001EC6A2 /* AppDelegate.swift */; };
 		E1EC8029209936B9001EC6A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EC8028209936B9001EC6A2 /* ViewController.swift */; };
 		E1EC802C209936B9001EC6A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EC802A209936B9001EC6A2 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		E16E2A0920B1CEAB0071D168 /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		E1E464E820DB3D4C00B7FD3D /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		E1E464EF20DB46CC00B7FD3D /* jr!ha___.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "jr!ha___.ttf"; sourceTree = "<group>"; };
+		E1E464F320DCA07A00B7FD3D /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		E1EC8023209936B8001EC6A2 /* Sprinkle of Yeezus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sprinkle of Yeezus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1EC8026209936B9001EC6A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1EC8028209936B9001EC6A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				E1EC802F209936BA001EC6A2 /* LaunchScreen.storyboard */,
 				E1EC8032209936BA001EC6A2 /* Info.plist */,
 				E1E464E820DB3D4C00B7FD3D /* TimePicker.swift */,
+				E1E464F320DCA07A00B7FD3D /* Defaults.swift */,
 				E1E464F120DB473000B7FD3D /* Fonts */,
 			);
 			path = "Sprinkle of Yeezus";
@@ -169,6 +172,7 @@
 				E1EC8029209936B9001EC6A2 /* ViewController.swift in Sources */,
 				E1EC8027209936B9001EC6A2 /* AppDelegate.swift in Sources */,
 				E130F99E20D74F3E00B2D0FA /* Settings.swift in Sources */,
+				E1E464F420DCA07A00B7FD3D /* Defaults.swift in Sources */,
 				E16E2A0A20B1CEAB0071D168 /* Quotes.swift in Sources */,
 				E1E464E920DB3D4C00B7FD3D /* TimePicker.swift in Sources */,
 			);

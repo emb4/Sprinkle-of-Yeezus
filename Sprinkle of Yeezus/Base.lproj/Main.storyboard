@@ -30,12 +30,6 @@
                                     <constraint firstAttribute="width" secondItem="xUs-yX-kbb" secondAttribute="height" multiplier="1:1" id="bYZ-IH-ZJ1"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" indicatorStyle="black" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Vd-ZT-Jec">
-                                <rect key="frame" x="0.0" y="136" width="414" height="344"/>
-                                <color key="textColor" red="0.47058823529411764" green="0.94117647058823528" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Jrhand" family="jr!hand" pointSize="26"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLL-nb-81D">
                                 <rect key="frame" x="102" y="521" width="170" height="41"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -67,8 +61,8 @@
                                     <segue destination="M4Q-uL-JFx" kind="show" id="4R8-jI-KXg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hit the Ye button to begin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tt-aI-1DN">
-                                <rect key="frame" x="53" y="228" width="269" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hit the Ye button to begin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="6Tt-aI-1DN">
+                                <rect key="frame" x="15" y="64" width="344" height="375"/>
                                 <fontDescription key="fontDescription" name="Jrhand" family="jr!hand" pointSize="26"/>
                                 <color key="textColor" red="0.47058823529999999" green="0.94117647059999998" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -76,30 +70,24 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Tt-aI-1DN" secondAttribute="trailing" constant="53" id="9CC-MS-OzW"/>
                             <constraint firstItem="xUs-yX-kbb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="APM-wA-0ku"/>
+                            <constraint firstItem="6Tt-aI-1DN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="CEs-5f-IFy"/>
                             <constraint firstItem="e3x-P9-EcG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="105" id="Ehc-q0-Xhf"/>
-                            <constraint firstItem="9Vd-ZT-Jec" firstAttribute="centerX" secondItem="xUs-yX-kbb" secondAttribute="centerX" id="HKz-yD-JDs"/>
                             <constraint firstItem="xUs-yX-kbb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HcU-d3-PwL"/>
                             <constraint firstItem="e3x-P9-EcG" firstAttribute="top" secondItem="zLL-nb-81D" secondAttribute="bottom" constant="8" id="HzU-BG-6VX"/>
-                            <constraint firstItem="9Vd-ZT-Jec" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="I3c-85-8zy"/>
                             <constraint firstItem="zLL-nb-81D" firstAttribute="centerX" secondItem="QWb-GZ-3Ci" secondAttribute="centerX" id="IjU-qI-Xey"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zLL-nb-81D" secondAttribute="trailing" constant="103" id="J2L-9k-JYo"/>
-                            <constraint firstItem="9Vd-ZT-Jec" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="K2H-5n-hrc"/>
                             <constraint firstItem="e3x-P9-EcG" firstAttribute="centerX" secondItem="QWb-GZ-3Ci" secondAttribute="centerX" id="Ml7-wf-vDd"/>
                             <constraint firstItem="QWb-GZ-3Ci" firstAttribute="top" secondItem="xUs-yX-kbb" secondAttribute="bottom" constant="30" id="MrP-ML-hld"/>
+                            <constraint firstItem="QWb-GZ-3Ci" firstAttribute="top" secondItem="6Tt-aI-1DN" secondAttribute="bottom" constant="30" id="OOj-WB-CV9"/>
                             <constraint firstItem="zLL-nb-81D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="102" id="PSD-gU-qru"/>
-                            <constraint firstItem="6Tt-aI-1DN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qb5-wL-css"/>
-                            <constraint firstItem="6Tt-aI-1DN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="53" id="RVV-Yc-VMa"/>
-                            <constraint firstItem="QWb-GZ-3Ci" firstAttribute="top" secondItem="9Vd-ZT-Jec" secondAttribute="bottom" constant="31" id="RxR-Dc-J2v"/>
                             <constraint firstItem="QWb-GZ-3Ci" firstAttribute="top" secondItem="xUs-yX-kbb" secondAttribute="bottom" constant="30" id="X7k-uM-yL2"/>
                             <constraint firstItem="xUs-yX-kbb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XS6-Ze-Fez"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QWb-GZ-3Ci" secondAttribute="trailing" constant="16" id="Yfr-iJ-m5z"/>
-                            <constraint firstItem="QWb-GZ-3Ci" firstAttribute="top" secondItem="6Tt-aI-1DN" secondAttribute="bottom" constant="206" id="Z5y-mG-KmC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e3x-P9-EcG" secondAttribute="trailing" constant="106" id="aHy-Jm-vtX"/>
-                            <constraint firstItem="6Tt-aI-1DN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="164" id="flR-8E-93M"/>
+                            <constraint firstItem="6Tt-aI-1DN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="bew-Mh-sJI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Tt-aI-1DN" secondAttribute="trailing" constant="16" id="fda-w7-GvA"/>
                             <constraint firstItem="QWb-GZ-3Ci" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="l38-GM-bAt"/>
-                            <constraint firstItem="9Vd-ZT-Jec" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="oJ1-aL-sv2"/>
                             <constraint firstItem="zLL-nb-81D" firstAttribute="top" secondItem="QWb-GZ-3Ci" secondAttribute="bottom" constant="8" id="swc-TZ-L9I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -109,9 +97,8 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="DescLabel" destination="6Tt-aI-1DN" id="8BL-Ap-bZF"/>
                         <outlet property="NewQuoteButtonLabel" destination="QWb-GZ-3Ci" id="Qdc-ym-sWR"/>
-                        <outlet property="QuoteBox" destination="9Vd-ZT-Jec" id="Vhw-80-xro"/>
+                        <outlet property="quoteLabel" destination="6Tt-aI-1DN" id="xgI-Fn-Rej"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

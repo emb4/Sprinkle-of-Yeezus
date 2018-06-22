@@ -30,8 +30,7 @@ extension UITextView {
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var DescLabel: UILabel!
-    @IBOutlet weak var QuoteBox: UITextView!
+    @IBOutlet weak var quoteLabel: UILabel!
     var regularCaseQuoteBoxText = String()
     @IBOutlet weak var NewQuoteButtonLabel: UIButton!
     
@@ -40,8 +39,8 @@ class ViewController: UIViewController {
         let sprinkleQuote = sprinkleList
         
         //fill quote box with quote
-        QuoteBox.text = "\(sprinkleQuote.quote)"
-        QuoteBox.centerVertically()
+        quoteLabel.text = "\(sprinkleQuote.quote)"
+       // QuoteBox.centerVertically()
         
         /*
         //fill source box
@@ -70,11 +69,11 @@ class ViewController: UIViewController {
     @IBAction func NewQuoteButton(_ sender: UIButton) {
         fillTextBoxes(pickRandomQuote(sprinkleList))
         NewQuoteButtonLabel.setTitle("MORE KANYE-FIDENCE", for: .normal)
-        DescLabel.isHidden = true
+       // DescLabel.isHidden = true
     }
     
     @IBAction func ShareButton(_ sender: UIButton) {
-        let quote = UIActivityViewController(activityItems: [QuoteBox.text + " - via Sprinkle of Yeezus app"], applicationActivities: nil)
+        let quote = UIActivityViewController(activityItems: [quoteLabel.text! + " - via Sprinkle of Yeezus app"], applicationActivities: nil)
         present(quote, animated: true, completion: nil)
     }
     

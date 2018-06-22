@@ -73,7 +73,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func ShareButton(_ sender: UIButton) {
-        let quote = UIActivityViewController(activityItems: [quoteLabel.text! + " - via Sprinkle of Yeezus app"], applicationActivities: nil)
+        let quote = UIActivityViewController(activityItems: [quoteLabel.text! + " - via Sprinkle of Yeezus app"], applicationActivities: nil)f
         present(quote, animated: true, completion: nil)
     }
     

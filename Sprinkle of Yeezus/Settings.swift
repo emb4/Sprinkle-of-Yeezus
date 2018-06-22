@@ -30,9 +30,8 @@ class SettingsPage: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let savedLabel = UserDefaults.standard.string(forKey: "labelSaved")
-        informationLabel.text = savedLabel
-        
+        let labelTime = UserDefaults.standard.string(forKey: "savedLabel")
+        informationLabel.text = labelTime
     }
     
     // MARK: - IBAction
@@ -102,15 +101,10 @@ class SettingsPage: UIViewController {
         timeFormat.dateStyle = .none
         timeFormat.timeStyle = .short
         let formattedTime = timeFormat.string(from: time)
-        UserDefaults.standard.set(formattedTime, forKey: "timeSaved")
-        let savedFormattedTime = UserDefaults.standard.string(forKey: "timeSaved")
         
-        informationLabel.text = "Sprinkles will be sent every day at \n"
-        if time == Date() && savedFormattedTime != nil{
-            informationLabel.text?.append(savedFormattedTime!)
-        } else {
-            informationLabel.text?.append(formattedTime)
-        }
+        informationLabel.text = "Sprinkles will be sent every day at \n\(formattedTime)"
+        UserDefaults.standard.set(informationLabel.text, forKey: "savedLabel")
+        
     }
 }
 

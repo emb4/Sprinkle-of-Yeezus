@@ -61,7 +61,7 @@
                                     <segue destination="M4Q-uL-JFx" kind="show" id="4R8-jI-KXg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hit the Ye button to begin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="6Tt-aI-1DN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hit the Ye button to begin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="6Tt-aI-1DN">
                                 <rect key="frame" x="15" y="64" width="344" height="375"/>
                                 <fontDescription key="fontDescription" name="Jrhand" family="jr!hand" pointSize="26"/>
                                 <color key="textColor" red="0.47058823529999999" green="0.94117647059999998" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

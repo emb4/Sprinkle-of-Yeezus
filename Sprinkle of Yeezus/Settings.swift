@@ -72,11 +72,22 @@ class SettingsPage: UIViewController {
         
         let notification = UNMutableNotificationContent()
         let notificationText = pickRandomQuote(sprinkleList)
-        notification.body = "\"\(notificationText.quote)\" \(notificationText.quoteSource), \(notificationText.date)"
+        
+        notification.body = "\"\(notificationText.quote)\""
+        if notificationText.quoteSource != "" {
+            notification.body.append(" - \(notificationText.quoteSource)")
+        }
+        if notificationText.date != 0 {
+            notification.body.append(", \(notificationText.date)")
+        }
 
         let components = Calendar.current.dateComponents([.hour, .minute], from: sprinkleTimePicked)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        var date = DateComponents()
+        date.hour = components.hour
+        date.minute = components.minute
+        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
         let request = UNNotificationRequest(identifier: "Sprinkle-of-Yeezus", content: notification, trigger: trigger)
+        print("Time set for \(date)")
         
         updateLabelTime()
         

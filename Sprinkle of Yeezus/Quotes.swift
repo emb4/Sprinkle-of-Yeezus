@@ -196,6 +196,6 @@ let sprinkleList = [Sprinkle(quote: "George Bush doesn't care about black people
                     Sprinkle(quote: "Dog, VIBE only gave my album a 4! I know my shit is better than a 4. A horrible album with just ‘Jesus Walks’ on it is a 4! C’mon dog, the demo version was a 5! You need to rate it again, but you’ll have to create a new rating system.", date: 2004, quoteSource: "Vibe"),
                     Sprinkle(quote: "Someone could be a better rapper, dance better. But culturally impacting? When you look back at these four and a half years, who's the icon at the end of the day? Who broke down color barriers? What other black guy would a white person use as a fashion reference?", date: 2009, quoteSource: "Details"),
                     Sprinkle(quote: "Anyone who doesn't give [The College Dropout] a perfect score is lowering the integrity of the magazine", date: 2005, quoteSource: "Guardian"),
-                    Sprinkle(quote: "I don't like walking around with people thinking I'm doing cool shit, because there's nothing I'm doing that's uncool", date: 2014, quoteSource: "GQ")
+                    Sprinkle(quote: "I don't like walking around with people thinking I'm doing cool shit, because there's nothing I'm doing that's uncool", date: 2014, quoteSource: "GQ"),
                     Sprinkle(quote: "I like T-shirts and women in yoga pants… I live in LA that’s what some people wear… not sure why someone would put a suit jacket with that.", date: 0, quoteSource: "")
 ]

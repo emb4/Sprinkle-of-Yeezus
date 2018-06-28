@@ -71,7 +71,7 @@ class SettingsPage: UIViewController {
         }
         
         let notification = UNMutableNotificationContent()
-        let notificationText = pickRandomQuote(sprinkleList)
+        let notificationText = pickRandomQuote(sprinkleList, pickedCount)
         
         notification.body = "\"\(notificationText.quote)\""
         if notificationText.quoteSource != "" {
@@ -81,21 +81,32 @@ class SettingsPage: UIViewController {
             notification.body.append(", \(notificationText.date)")
         }
 
-        let components = Calendar.current.dateComponents([.hour, .minute], from: sprinkleTimePicked)
-        var date = DateComponents()
-        date.hour = components.hour
-        date.minute = components.minute
-        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-        let request = UNNotificationRequest(identifier: "Sprinkle-of-Yeezus", content: notification, trigger: trigger)
-        print("Time set for \(date)")
+        var components = Calendar.current.dateComponents([.hour, .minute], from: sprinkleTimePicked)
         
-        updateLabelTime()
+        let today = Date()
+        let calendar = Calendar.current
+        components.day = calendar.component(.day, from: today)
+        let month = 30
+        var nextDay = DateComponents()
+        nextDay.hour = components.hour
+        nextDay.minute = components.minute
+        
+       for days in 0...month {
+        nextDay.day = components.day! + days
+        let trigger = UNCalendarNotificationTrigger(dateMatching: nextDay, repeats: false)
+        let request = UNNotificationRequest(identifier: "Sprinkle number \(days)", content: notification, trigger: trigger)
+        print("Time set for \(nextDay)")
         
         notificationCenter.add(request) { error in
             if let error = error {
                 print(error)
+                }
             }
         }
+        
+        updateLabelTime()
+        
+
     }
     
     func updateSwitchStatus(){ //this function checks to see if the switch was flipped in the past and acts accordingly

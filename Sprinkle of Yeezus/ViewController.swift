@@ -9,65 +9,67 @@
 import UIKit
 import UserNotifications
 
-func pickRandomQuote(_  sprinkleList: Array<Sprinkle>) -> Sprinkle{
+var pickedCount = Array(repeating: 0, count: sprinkleList.count)
+
+func pickRandomQuote(_  sprinkleList: Array<Sprinkle>, _ pickrate: Array<Int>) -> Sprinkle{
     let range = sprinkleList.count
     let pick = Int(arc4random_uniform(UInt32(range)))
+    
+    var minimum = pickrate.min()
+    var selection = sprinkleList[pick]
+    if selection.timesPicked == minimum!{
+        selection.timesPicked += 1
+        
+    }
+    
     print(sprinkleList[pick])
     return sprinkleList[pick]
     //This picks a random kanye quote from the structure
-}
-extension UITextView {
-    
-    func centerVertically() {
-        let fittingSize = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)
-        let size = sizeThatFits(fittingSize)
-        let topOffset = (bounds.size.height - size.height * zoomScale) / 2
-        let positiveTopOffset = max(1, topOffset)
-        contentOffset.y = -positiveTopOffset
-    }
-    
 }
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var quoteLabel: UILabel!
-    var regularCaseQuoteBoxText = String()
     @IBOutlet weak var NewQuoteButtonLabel: UIButton!
+    @IBOutlet weak var sourceLabel: UILabel!
     
     //Filling in boxes
     func fillTextBoxes(_ sprinkleList: Sprinkle) {
-        let sprinkleQuote = sprinkleList
+        var sprinkleQuote = sprinkleList
         
         //fill quote box with quote
         quoteLabel.text = "\(sprinkleQuote.quote)"
+        sprinkleQuote.timesPicked += 1
        // QuoteBox.centerVertically()
         
-        /*
+        
         //fill source box
         if sprinkleQuote.quoteSource.isEmpty {
-            QuoteBox.text.append("\n\n - Kanye West")
+            sourceLabel.text = ""
         } else {
-            QuoteBox.text.append("\n\n \(sprinkleQuote.quoteSource)")
+            sourceLabel.text = "\(sprinkleQuote.quoteSource)"
         }
   
-        //fill date box with year if there is one
+        //fill source box with year if there is one
         if sprinkleQuote.date != 0 {
-            QuoteBox.text?.append(", \(sprinkleQuote.date)")
+            if (sourceLabel.text?.isEmpty)!{
+                sourceLabel.text = "\(sprinkleQuote.date)"
+            } else {
+                sourceLabel.text?.append(", \(sprinkleQuote.date)")
+            }
         }
- */
-
     }
-    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.4705882353, green: 0.9411764706, blue: 0.368627451, alpha: 1)
+        pickedCount[5] = 6
     }
     
     @IBAction func NewQuoteButton(_ sender: UIButton) {
-        fillTextBoxes(pickRandomQuote(sprinkleList))
+        fillTextBoxes(pickRandomQuote(sprinkleList, pickedCount))
         NewQuoteButtonLabel.setTitle("MORE KANYE-FIDENCE", for: .normal)
        // DescLabel.isHidden = true
     }

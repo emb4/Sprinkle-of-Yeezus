@@ -19,7 +19,6 @@
         <!--Sprinkel-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController title="Sprinkel" id="BYZ-38-t0r" customClass="ViewController" customModule="Sprinkle_of_Yeezus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIImageView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -51,7 +50,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="shareglyph"/>
                                 <connections>
-                                    <action selector="ShareButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S2h-de-wut"/>
+                                    <action selector="shareButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZvA-kd-Yj9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avB-ji-zM0">
@@ -64,7 +63,7 @@
                                     <color key="titleColor" red="0.47058823529999999" green="0.94117647059999998" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="NewQuoteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Rc-Xu-9yC"/>
+                                    <action selector="newQuoteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PBk-My-FIq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -99,11 +98,12 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="NewQuoteButtonLabel" destination="avB-ji-zM0" id="csz-7i-pHu"/>
+                        <outlet property="newQuoteButtonLabel" destination="avB-ji-zM0" id="kWv-25-Epu"/>
                         <outlet property="quoteLabel" destination="6Tt-aI-1DN" id="xgI-Fn-Rej"/>
                         <outlet property="sourceLabel" destination="Zc8-Zv-V9P" id="n8F-Py-Mub"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1063.125" y="124.64788732394366"/>
         </scene>

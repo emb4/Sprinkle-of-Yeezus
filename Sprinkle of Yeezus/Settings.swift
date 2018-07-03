@@ -37,11 +37,11 @@ class SettingsPage: UIViewController {
     @IBAction private func notificationSwitch(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey: "switchStatus") //saves the status of the switch
         if sender.isOn {
-            notificationCenter.requestAuthorization(options: [.alert, .sound], completionHandler: { didAllow, error in
+            notificationCenter.requestAuthorization(options: [.alert, .sound], completionHandler: { didAllow, error in /*
                 DispatchQueue.main.async {
                     sender.isOn = didAllow
                     self.updateUI()
-                }
+                } */
             })
         }
         updateUI()
@@ -57,7 +57,14 @@ class SettingsPage: UIViewController {
     
     // MARK: - Private
     private func updateUI() {
-        [informationLabel, changeTimeButton].forEach { $0.isHidden = !notificationSwitch.isOn }
+        if notificationSwitch.isOn{
+            informationLabel.isHidden = false
+            changeTimeButton.isHidden = false
+        } else {
+            informationLabel.isHidden = true
+            changeTimeButton.isHidden = true
+        }
+        print("\(notificationSwitch.isOn)")
     }
     
     
@@ -112,6 +119,7 @@ class SettingsPage: UIViewController {
         guard notificationSwitch.isOn else { //Runs only user turns on notification switch
             return
         }
+        
         let today = Date()
         let currentCalendar = Calendar.current
         var anniversaryDate = DateComponents()
@@ -165,7 +173,7 @@ class SettingsPage: UIViewController {
         }
     }
     
-    func updateLabelTime(){ //updates the label that shows when the next sprinkle is coming, currently not working 100%
+    func updateLabelTime(){ //updates the label that shows when the next sprinkle is coming
         let time = sprinkleTimePicked
         let timeFormat = DateFormatter()
         timeFormat.dateStyle = .none
@@ -174,7 +182,6 @@ class SettingsPage: UIViewController {
         
         informationLabel.text = "Sprinkles will be sent every day at \n\(formattedTime)"
         UserDefaults.standard.set(informationLabel.text, forKey: "savedLabel")
-        
     }
 }
 

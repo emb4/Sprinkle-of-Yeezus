@@ -9,57 +9,64 @@
 import UIKit
 import UserNotifications
 
+var elementPicked = [Int]() //array that keeps track of previously picked quotes to avoid duplicates
+
 func pickRandomQuote(_  sprinkleList: Array<Sprinkle>) -> Sprinkle{
+    // Picks a random Kanye Quote from structure
+    print("\nPicking quote...")
     let range = sprinkleList.count
-    let pick = Int(arc4random_uniform(UInt32(range)))
-    print(sprinkleList[pick])
-    return sprinkleList[pick]
-    //This picks a random kanye quote from the structure
-}
-extension UITextView {
+    var pick = Int(arc4random_uniform(UInt32(range)))
+    var notADuplicate = false
+    var selection = sprinkleList[pick]
+    var attempt = 0
     
-    func centerVertically() {
-        let fittingSize = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)
-        let size = sizeThatFits(fittingSize)
-        let topOffset = (bounds.size.height - size.height * zoomScale) / 2
-        let positiveTopOffset = max(1, topOffset)
-        contentOffset.y = -positiveTopOffset
+    while notADuplicate == false { //avoids duplicate picks.. unless it can't fine a unique quote after 10 tries
+        if elementPicked.contains(pick){
+            if attempt == 10{
+                print("No unique quotes found after 10 attemps.. picking: \(selection.quote)")
+                return selection
+            }
+            attempt += 1
+            print("Duplicate found \(attempt) times.. trying again")
+            pick = Int(arc4random_uniform(UInt32(range)))
+            selection = sprinkleList[pick]
+        } else {
+            notADuplicate = true
+            print("Picked quote: \(selection.quote)")
+            elementPicked.append(pick)
+            return selection
+        }
     }
-    
 }
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var DescLabel: UILabel!
-    @IBOutlet weak var QuoteBox: UITextView!
-    var regularCaseQuoteBoxText = String()
-    @IBOutlet weak var NewQuoteButtonLabel: UIButton!
+    @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var newQuoteButtonLabel: UIButton!
+    @IBOutlet weak var sourceLabel: UILabel!
     
     //Filling in boxes
-    func fillTextBoxes(_ sprinkleList: Sprinkle) {
-        let sprinkleQuote = sprinkleList
+    func fillTextBoxes(_ sprinkleQuote: Sprinkle) {
         
         //fill quote box with quote
-        QuoteBox.text = "\(sprinkleQuote.quote)"
-        QuoteBox.centerVertically()
+        quoteLabel.text = "\(sprinkleQuote.quote)"
         
-        /*
         //fill source box
         if sprinkleQuote.quoteSource.isEmpty {
-            QuoteBox.text.append("\n\n - Kanye West")
+            sourceLabel.text = ""
         } else {
-            QuoteBox.text.append("\n\n \(sprinkleQuote.quoteSource)")
+            sourceLabel.text = "\(sprinkleQuote.quoteSource)"
         }
   
-        //fill date box with year if there is one
+        //fill source box with year if there is one
         if sprinkleQuote.date != 0 {
-            QuoteBox.text?.append(", \(sprinkleQuote.date)")
+            if (sourceLabel.text?.isEmpty)!{
+                sourceLabel.text = "\(sprinkleQuote.date)"
+            } else {
+                sourceLabel.text?.append(", \(sprinkleQuote.date)")
+            }
         }
- */
-
     }
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,18 +74,15 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.4705882353, green: 0.9411764706, blue: 0.368627451, alpha: 1)
     }
     
-    @IBAction func NewQuoteButton(_ sender: UIButton) {
+    @IBAction func newQuoteButton(_ sender: UIButton) {
         fillTextBoxes(pickRandomQuote(sprinkleList))
-        NewQuoteButtonLabel.setTitle("MORE KANYE-FIDENCE", for: .normal)
-        DescLabel.isHidden = true
+        newQuoteButtonLabel.setTitle("MORE KANYE-FIDENCE", for: .normal)
     }
     
-    @IBAction func ShareButton(_ sender: UIButton) {
-        let quote = UIActivityViewController(activityItems: [QuoteBox.text + " - via Sprinkle of Yeezus app"], applicationActivities: nil)
+    @IBAction func shareButton(_ sender: UIButton) {
+        let quote = UIActivityViewController(activityItems: [quoteLabel.text! + " - via Sprinkle of Yeezus app"], applicationActivities: nil)
         present(quote, animated: true, completion: nil)
     }
-    
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
